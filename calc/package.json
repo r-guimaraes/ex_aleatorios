@@ -1,0 +1,23 @@
+{
+  "name": "calc-churrasco",
+  "version": "1.0.0",
+  "description": "Calcule seu churrasco",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-guimaraes/ex_aleatorios.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r-guimaraes/ex_aleatorios/issues"
+  },
+  "homepage": "https://github.com/r-guimaraes/ex_aleatorios#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1"
+  }
+}
