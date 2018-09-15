@@ -24,19 +24,18 @@
         </div>
       </header>
 
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">Calcule o valor do seu churrasco</h1>
-        <p class="lead">Vai fazer um churrasco? Calcule aqui o que você precisa!</p>
-        <p class="lead">
-        	<form id="calcular">
-        		<input type="text" name="adultos"  placeholder="Quantos adultos?">
-        		<input type="text" name="criancas" placeholder="E quantas crianças?">
-        	</form>
-        </p>
-        <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary">Calcular</a>
-        </p>
-      </main>
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading">Calcule o valor do seu churrasco</h1>
+            <p class="lead">Vai fazer um churrasco? Calcule aqui o que você precisa!</p>
+
+            <form id="calcular" onsubmit="totalChurrasco()">
+                <input type="number" name="adultos"  placeholder="Quantos adultos?" />
+                <input type="number" name="criancas" placeholder="E quantas crianças?" />
+                <br>
+                <br>
+                <input type="submit" class="btn btn-lg btn-secondary" value="Calcular">
+            </form>
+        </main>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
