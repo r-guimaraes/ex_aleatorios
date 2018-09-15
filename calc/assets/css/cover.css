@@ -107,8 +107,7 @@ body {
 main.inner {
   padding: 20px;
   border-radius: 5px;
-  background: rgba(211, 211, 211, .6);
-  opacity: 0.85;
+  background: rgba(211, 211, 211, .8);
 }
 
 main.inner form input {

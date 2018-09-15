@@ -18,7 +18,7 @@
         <div class="inner">
           <h3 class="masthead-brand">MeuChurrasco</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link active" href="index.html">Home</a>
             <a class="nav-link" href="fornecedores.html">Fornecedores</a>            
           </nav>
         </div>
@@ -28,7 +28,7 @@
             <h1 class="cover-heading">Calcule o valor do seu churrasco</h1>
             <p class="lead">Vai fazer um churrasco? Calcule aqui o que você precisa!</p>
 
-            <form id="calcular" onsubmit="totalChurrasco()">
+            <form id="calcular" method="post" onsubmit="totalChurrasco()">
                 <input type="number" required name="adultos"  placeholder="Quantos adultos?" />
                 <input type="number" required name="criancas" placeholder="E quantas crianças?" />
 
@@ -42,6 +42,12 @@
                 <br>
                 <input type="submit" class="btn btn-lg btn-secondary" value="Calcular">
             </form>
+
+            <div class="col-md-12" style="background: blanchedalmond; color: black;">
+                Valor do churrasco:
+                <div id="valor"></div>
+            </div>
+
         </main>
 
       <footer class="mastfoot mt-auto">
