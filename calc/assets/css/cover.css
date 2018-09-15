@@ -104,6 +104,16 @@ body {
   font-weight: 700;
 }
 
+main.inner {
+  padding: 20px;
+  border-radius: 5px;
+  background: rgba(211, 211, 211, .6);
+  opacity: 0.85;
+}
+
+main.inner form input {
+  padding: 8px;
+}
 
 /*
  * Footer
@@ -113,7 +123,7 @@ body {
 }
 
 footer {
-  background: #e3e3e3;
+  background: wheat;
   opacity: 0.75;
   padding-top: 15px;
   font-size: 12px;
