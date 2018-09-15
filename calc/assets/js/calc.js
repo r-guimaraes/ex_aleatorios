@@ -4,3 +4,13 @@ function totalChurrasco() {
     var total = adults + children;
     alert("churrasco pra " + total + " pessoas");
 }
+
+var $forn = {
+  picanha: 30,
+  fraldinha: 20,
+  cupim: 22,
+};
+
+function valores() {
+    return $forn.cupim;
+}
