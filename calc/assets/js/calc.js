@@ -47,8 +47,8 @@ function totalChurrasco() {
 }
 
 function retorno(kg, preco) {
-    var r = "<hr> Quantidade recomendada: " + kg  + " Kgs";
-    r += "<br> Preço médio: R$ " + preco + "<br><br>";
+    var r = "<hr> Quantidade recomendada: " + kg.toFixed(2)  + " Kgs";
+    r += "<br> Estimativa de preço: R$ " + preco.toFixed(2) + "<br><br>";
     r += "<small><i>Considerando quantidades similares de cada corte selecionado</i></small>";
 
     return r;
