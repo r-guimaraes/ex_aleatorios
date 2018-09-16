@@ -47,8 +47,11 @@ function totalChurrasco() {
 }
 
 function retorno(kg, preco) {
+    var reais = preco.toFixed(2);
+    var num_adultos = Churrasco.adultos;
     var r = "<hr> Quantidade recomendada: " + kg.toFixed(2)  + " Kgs";
-    r += "<br> Estimativa de preço: R$ " + preco.toFixed(2) + "<br><br>";
+    r += "<br> Estimativa de preço: R$ " + reais;
+    r += "<br> Valor estimado por adulto: R$ " + (reais/num_adultos) + "<br><br>";
     r += "<small><i>Considerando quantidades similares de cada corte selecionado</i></small>";
 
     return r;
