@@ -16,7 +16,7 @@
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">MeuChurrasco</h3>
+          <h3 class="masthead-brand">Meu Churrasco</h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="index.html">Home</a>
             <a class="nav-link" href="fornecedores.html">Fornecedores</a>            
@@ -32,18 +32,33 @@
                 <input type="number" required name="adultos"  placeholder="Quantos adultos?" />
                 <input type="number" required name="criancas" placeholder="E quantas crianças?" />
 
-                <div class="col-md-12">
-
-                    <input type="checkbox" name="picanha" value="picanha" checked> Picanha
-                    <input type="checkbox" name="fraldinha" value="fraldinha"> Fraldinha
-                    <input type="checkbox" name="cupim" value="cupim"> Cupim
+                <div class="col-md-8">
+                    <label class="text-left">
+                        <input type="checkbox" name="carne[]" value="picanha" checked> Picanha
+                    </label>
+                    <label class="text-left">
+                        <input type="checkbox" name="carne[]" value="fraldinha"> Fraldinha
+                    </label>
+                    <label class="text-left">
+                        <input type="checkbox" name="carne[]" value="cupim"> Cupim
+                    </label>
+                    <label class="text-left">
+                        <input type="checkbox" name="carne[]" value="contra_file"> Contra Filé
+                    </label>
+                    <label class="text-left">
+                        <input type="checkbox" name="carne[]" value="coracao"> Coração
+                    </label>
+                    <label class="text-left">
+                        <input type="checkbox" name="carne[]" value="linguica"> Linguiça de Frango
+                    </label>
                 </div>
+
                 <br>
                 <br>
                 <input type="submit" class="btn btn-lg btn-secondary" value="Calcular">
             </form>
 
-            <div class="col-md-12" style="background: blanchedalmond; color: black;">
+            <div class="col-md-12 calc-wrapper d-none">
                 Valor do churrasco:
                 <div id="valor"></div>
             </div>

@@ -27,7 +27,10 @@ function totalChurrasco() {
     Churrasco.adultos = parseInt($('input[name="adultos"]').val());
     Churrasco.criancas = parseInt($('input[name="criancas"]').val());
 
-    $("#valor").html("Kgs necessários: " + Churrasco.total_kg());
+//    var preco =
+
+    $(".calc-wrapper").removeClass('d-none');
+    $("#valor").html("Quantidade necessária: " + Churrasco.total_kg() + " Kgs");
 
     return false;
 }

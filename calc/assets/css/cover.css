@@ -43,6 +43,11 @@ body {
   background-image: url('../images/churrasco.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  opacity: 0.9;
+}
+
+body:before {
+
 }
 
 .cover-container {
@@ -92,7 +97,6 @@ body {
   }
 }
 
-
 /*
  * Cover
  */
@@ -107,11 +111,26 @@ body {
 main.inner {
   padding: 20px;
   border-radius: 5px;
-  background: rgba(211, 211, 211, .8);
+  background: rgba(211, 211, 211, .9);
+  color: black;
 }
 
 main.inner form input {
   padding: 8px;
+}
+
+main.inner form .col-md-8 {
+  padding: 20px 90px;
+}
+
+main.inner form .col-md-8 label {
+  display: block !important;
+}
+
+main .calc-wrapper {
+  background: aliceblue;
+  color: black;
+  margin-top: 30px;
 }
 
 /*
@@ -127,7 +146,6 @@ footer {
   padding-top: 15px;
   font-size: 12px;
   border-radius: 5px;
-  
 }
 
 footer a {
