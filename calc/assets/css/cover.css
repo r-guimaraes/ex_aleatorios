@@ -128,14 +128,16 @@ main.inner form .col-md-8 label {
 }
 
 main .calc-wrapper {
-  background: aliceblue;
-  color: black;
   margin-top: 30px;
 }
 
-/*
- * Footer
- */
+main .calc-wrapper.result {
+  padding: 20px;
+}
+
+  /*
+   * Footer
+   */
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
