@@ -24,13 +24,28 @@ var Churrasco = new function () {
 
 function totalChurrasco() {
     event.preventDefault();
+
     Churrasco.adultos = parseInt($('input[name="adultos"]').val());
     Churrasco.criancas = parseInt($('input[name="criancas"]').val());
 
-//    var preco =
+    var escolhas = [];
+    $(':checkbox:checked').each(function(i){
+        escolhas[i] = $(this).val();
+    });
+
+    var custo = 0;
+    $(escolhas).each(function (i,v) {
+        custo += Churrasco.precos[v];
+    });
 
     $(".calc-wrapper").removeClass('d-none');
-    $("#valor").html("Quantidade necessária: " + Churrasco.total_kg() + " Kgs");
+
+    var quilos = Churrasco.total_kg();
+    var qtd = "Quantidade necessária: " + quilos  + " Kgs";
+    var preco = "<br> R$ " + ((custo * quilos) / escolhas.length) + "<br>";
+    var obs = "<small><i>Considerando quantidades similares de cada corte selecionado</i></small>";
+
+    $("#valor").html( qtd + preco + obs);
 
     return false;
 }
