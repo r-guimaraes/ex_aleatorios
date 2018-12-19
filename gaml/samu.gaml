@@ -33,9 +33,11 @@ species pessoa {
 	aspect pessoa_base {
 		draw sphere(tamanho) color: cor;
 	}
-	
+
 	lugar escolher_lugar {
-		return nil;
+		//		return nil;
+		
+		return (posicao.vizinhos) with_max_of (each.food);
 	}
 
 } /* Espécie Pessoa */
