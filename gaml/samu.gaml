@@ -94,7 +94,7 @@ grid lugar width: 50 height: 50 neighbors: 10 {
 	float maxFood <- 1.0 ;
 	float foodProd <- (rnd(1000) / 1000) * 0.01 ;
 	float food <- (rnd(1000) / 1000) max: maxFood update: food + foodProd ;
-	// rgb color <- rgb(int(255 * (1 - food)), 255, int(255 * (1 - food))) update: rgb(int(255 * (1 - food)), 255, int(255 *(1 - food))) ;
+	rgb color <- rgb(int(225 * (1 - food)), 255, int(255 * (1 - food))) update: rgb(int(255 * (1 - food)), 255, int(255 *(1 - food))) ;
 	list<lugar> vizinhos  <- (self neighbors_at movimentacao); 
 }
 
