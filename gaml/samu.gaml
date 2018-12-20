@@ -8,9 +8,14 @@
 model SAMU
 
 global {
-	int nb_pessoas_init <- 50;
+	int qtd_pessoas <- 50;
+	int qtd_ambulancias <- 5;
+	int qtd_carros <- 20;
+	
 	init {
-		create pessoa number: nb_pessoas_init;
+		create pessoa number: qtd_pessoas;
+		create ambulancia number: qtd_ambulancias;
+		create carro number: qtd_carros;		
 	}
 }
 
@@ -18,7 +23,7 @@ global {
 species pessoa {
 	string nome;
 	int idade;
-	float tamanho <- 1.2;
+	float tamanho <- 1.1;
 	rgb cor <- #brown;
 	lugar posicao <- one_of (lugar);
 	
@@ -38,7 +43,37 @@ species pessoa {
 	lugar escolher_lugar {
 		return (posicao.vizinhos) with_max_of (each.food);
 	}
+}
 
+/* Veículo Genérico */
+species automovel {
+	float tamanho <- 1.5;
+	rgb cor;
+	lugar posicao <- one_of(lugar);
+	
+	aspect auto_base {
+		draw sphere(tamanho) color: cor;
+	}
+	
+	init {
+		location <- posicao.location;
+	}
+}
+
+/* Espécie Ambulância */
+species ambulancia parent: automovel {
+	rgb cor <- pega_cor();	
+	rgb pega_cor {
+		return #red;
+	}
+}
+
+/* Espécie Carro */
+species carro parent: automovel {	
+	rgb cor <- pega_cor();	
+	rgb pega_cor {
+		return #silver;
+	}
 }
 
 grid lugar width: 50 height: 50 neighbors: 10 {
@@ -55,6 +90,8 @@ experiment SAMU type: gui {
 		display main_display {
 			grid lugar lines: #black ;
 			species pessoa aspect: pessoa_base;
+			species carro aspect: auto_base;
+			species ambulancia aspect: auto_base;
 		}
 	}
 }
