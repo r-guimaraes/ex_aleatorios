@@ -60,6 +60,15 @@ species automovel {
 		draw sphere(tamanho) color: cor;
 	}
 	
+	lugar escolher_lugar {
+		return (posicao.vizinhos) with_max_of (each.food);
+	}
+	
+	reflex drive {
+		posicao <- escolher_lugar();
+		location <- posicao.location; 		
+	}
+	
 	init {
 		location <- posicao.location;
 	}
@@ -85,7 +94,7 @@ grid lugar width: 50 height: 50 neighbors: 10 {
 	float maxFood <- 1.0 ;
 	float foodProd <- (rnd(1000) / 1000) * 0.01 ;
 	float food <- (rnd(1000) / 1000) max: maxFood update: food + foodProd ;
-	rgb color <- rgb(int(255 * (1 - food)), 255, int(255 * (1 - food))) update: rgb(int(255 * (1 - food)), 255, int(255 *(1 - food))) ;
+	// rgb color <- rgb(int(255 * (1 - food)), 255, int(255 * (1 - food))) update: rgb(int(255 * (1 - food)), 255, int(255 *(1 - food))) ;
 	list<lugar> vizinhos  <- (self neighbors_at movimentacao); 
 }
 
