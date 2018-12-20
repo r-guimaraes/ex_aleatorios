@@ -1,16 +1,21 @@
 /***
 * Name: SAMU
-* Author: rodrigo
-* Description: 
+* Author: Grupo UFG (Tópicos 1- Inteligência Artificial)
+* Description: Simulação atendimento SAMU para atropelamentos
 * Tags: GAMA, SAMU
 ***/
 
 model SAMU
 
 global {
+	
+	// Qtds iniciais das species
 	int qtd_pessoas <- 50;
 	int qtd_ambulancias <- 5;
 	int qtd_carros <- 20;
+	
+	// Range de movimentação das species
+	float movimentacao <- 3.5;
 	
 	init {
 		create pessoa number: qtd_pessoas;
@@ -81,14 +86,14 @@ grid lugar width: 50 height: 50 neighbors: 10 {
 	float foodProd <- (rnd(1000) / 1000) * 0.01 ;
 	float food <- (rnd(1000) / 1000) max: maxFood update: food + foodProd ;
 	rgb color <- rgb(int(255 * (1 - food)), 255, int(255 * (1 - food))) update: rgb(int(255 * (1 - food)), 255, int(255 *(1 - food))) ;
-	list<lugar> vizinhos  <- (self neighbors_at 2); 
+	list<lugar> vizinhos  <- (self neighbors_at movimentacao); 
 }
 
 experiment SAMU type: gui {
 	
 	output {
 		display main_display {
-			grid lugar lines: #black ;
+			grid lugar lines: #black;
 			species pessoa aspect: pessoa_base;
 			species carro aspect: auto_base;
 			species ambulancia aspect: auto_base;
