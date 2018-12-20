@@ -31,6 +31,7 @@ species pessoa {
 	float tamanho <- 1.1;
 	rgb cor <- #brown;
 	lugar posicao <- one_of (lugar);
+	file _pessoa <- image_file("../data/usuario.png");
 	
 	init {
 		location <- posicao.location;
@@ -43,6 +44,10 @@ species pessoa {
 	
 	aspect pessoa_base {
 		draw sphere(tamanho) color: cor;
+	}
+	
+	aspect icone {
+		draw _pessoa size: 2 * tamanho;
 	}
 
 	lugar escolher_lugar {
@@ -86,7 +91,7 @@ species ambulancia parent: automovel {
 species carro parent: automovel {	
 	rgb cor <- pega_cor();	
 	rgb pega_cor {
-		return #silver;
+		return #blue;
 	}
 }
 
@@ -103,7 +108,7 @@ experiment SAMU type: gui {
 	output {
 		display main_display {
 			grid lugar lines: #black;
-			species pessoa aspect: pessoa_base;
+			species pessoa aspect: icone;
 			species carro aspect: auto_base;
 			species ambulancia aspect: auto_base;
 		}
