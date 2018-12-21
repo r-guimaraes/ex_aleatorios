@@ -26,12 +26,12 @@ global {
 
 /* Espécie Pessoa */
 species pessoa {
-	string nome;
-	int idade;
+	bool atropelada <- false;
 	float tamanho <- 1.1;
 	rgb cor <- #brown;
 	lugar posicao <- one_of (lugar);
-	file _pessoa <- image_file("../includes/images/usuario.jpg");
+	file _pessoa <- image_file("../includes/images/usuario.png");
+	file _atropelado <- image_file("../includes/images/usuario-atropelado.png");
 	
 	init {
 		location <- posicao.location;
@@ -48,6 +48,16 @@ species pessoa {
 	
 	aspect icone {
 		draw _pessoa size: 2 * tamanho;
+		
+		list<carro> armas;
+		ask armas at_distance(1.0) {
+			write string("nossa deu ruim!!");
+			draw myself._atropelado size: 3 * tamanho;
+		}
+	}
+	
+	reflex marcar when: atropelada {
+		_pessoa <- _atropelado;
 	}
 
 	lugar escolher_lugar {
@@ -101,11 +111,15 @@ species carro parent: automovel {
 	
 	list<pessoa> pedestres update: pessoa inside (posicao);
 	
-	
 	reflex atropela when: !empty(pedestres) {
 		ask one_of (pedestres) {
-			write string("Atropelei uma pessoa!");
+			//pessoa.atropelada <- true;
+			write string("Atropelei uma pessoa! Na posição: " + posicao);
+			draw sphere(1.6) color: #red;
 		}
+		
+		//pessoa p <- pedestres at posicao;
+		// p.atropelada <- true;
 //		energy <- energy + energy_transfert ;
 	}
 }
