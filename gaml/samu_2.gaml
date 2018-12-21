@@ -2,6 +2,7 @@ model my_grid_model
 
 global{
 	float max_range <- 5.0;
+	float min_range <- 2.0;
 	int number_of_agents <- 5;
 	int number_of_cars <- 2;
 	init {
@@ -11,7 +12,7 @@ global{
 	reflex update {
 		ask pessoa {
 			do wander amplitude:180.0;	
-			ask my_grid at_distance(max_range)
+			ask centro_goiania at_distance(max_range)
 			{
 				if(self overlaps myself)
 				{
@@ -23,36 +24,78 @@ global{
 				}
 			}
 		}
-		ask my_grid {
+		
+		ask carro {
+			do wander amplitude:180.0;	
+			ask centro_goiania at_distance(min_range) {
+				if (self overlaps myself) {
+					self.color_value <- 3;
+				}
+			}
+		}
+		
+		ask centro_goiania {
 			do update_color;
-		}	
-	}
+		}		
+	} // reflex update
+	
+	reflex atropela {
+		ask pessoa {
+			ask carro at_distance(min_range) {
+				if (self overlaps myself) {
+					write string("BATEU!!");
+					myself._color <- 1;
+				}
+			}
+		}
+		
+		ask pessoa {
+			do atualiza_ai;
+		}
+	} // reflex atropela
 }
 
 species pessoa skills:[moving] {
 	float speed <- 2.0;
+	file _pessoa <- image_file("../includes/images/usuario.jpg");
+	float tamanho <- 1.1;
+	int _color <- 0;
+	
+	action atualiza_ai {
+		if (_color = 0) {
+			color <- #blue;
+		} else if (_color = 1) {
+			color <- #red;
+		}
+		_color <- 0;
+	}
+	
 	aspect default {
-		draw circle(1) color:#blue;
+		//draw _pessoa size: 2 * tamanho;
+		draw circle(1) color: #blue;
 	}
 }
 
-species carro {
+species carro skills:[moving] {
 	aspect padrao {
-		draw circle(1) color: #brown;
+		draw sphere(1) color: #green;
 	}
 }
 
-grid my_grid width:30 height:30 {
+grid centro_goiania width:30 height:30 {
 	int color_value <- 0;
 	action update_color {
 		if (color_value = 0) {
-			color <- #green;
+			color <- #grey;
 		}
 		else if (color_value = 1) {
 			color <- #yellow;
 		}
 		else if (color_value = 2) {
-			color <- #red;
+			color <- #orange;
+		}
+		else if(color_value = 3) {
+			color <- #black;
 		}
 		color_value <- 0;
 	}
@@ -61,7 +104,7 @@ grid my_grid width:30 height:30 {
 experiment SAMU2 type: gui {
     output {
         display ambienteSAMU type: java2D {
-            grid my_grid lines:#black;
+            grid centro_goiania lines:#black;
             species pessoa aspect:default; 
             species carro aspect:padrao;
         }
