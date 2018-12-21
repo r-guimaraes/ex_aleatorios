@@ -69,9 +69,9 @@ species automovel {
 		return (posicao.vizinhos) with_max_of (each.food);
 	}
 	
-	reflex drive {
+	reflex dirigir {
 		posicao <- escolher_lugar();
-		location <- posicao.location; 		
+		location <- posicao.location;
 	}
 	
 	init {
@@ -88,7 +88,7 @@ species ambulancia parent: automovel {
 	}
 	
 	aspect icone {
-		draw _ambulancia size: 1.5 * tamanho;
+		draw _ambulancia size: 1.7 * tamanho;
 	}
 }
 
@@ -98,13 +98,25 @@ species carro parent: automovel {
 	rgb pega_cor {
 		return #blue;
 	}
+	
+	list<pessoa> pedestres update: pessoa inside (posicao);
+	
+	
+	reflex atropela when: !empty(pedestres) {
+		ask one_of (pedestres) {
+			write string("Atropelei uma pessoa!");
+		}
+//		energy <- energy + energy_transfert ;
+	}
 }
 
 grid lugar width: 50 height: 50 neighbors: 10 {
+	int base_color_code <- 192; // 255 (verde)
+	
 	float maxFood <- 1.0 ;
 	float foodProd <- (rnd(1000) / 1000) * 0.01 ;
 	float food <- (rnd(1000) / 1000) max: maxFood update: food + foodProd ;
-	rgb color <- rgb(int(225 * (1 - food)), 255, int(255 * (1 - food))) update: rgb(int(255 * (1 - food)), 255, int(255 *(1 - food))) ;
+	rgb color <- rgb(int(base_color_code * (1 - food)), base_color_code, int(base_color_code * (1 - food))) update: rgb(int(base_color_code * (1 - food)), base_color_code, int(base_color_code *(1 - food))) ;
 	list<lugar> vizinhos  <- (self neighbors_at movimentacao); 
 }
 
