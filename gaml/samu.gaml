@@ -21,6 +21,7 @@ global {
 		create pessoa number: qtd_pessoas;
 		create ambulancia number: qtd_ambulancias;
 		create carro number: qtd_carros;		
+		create departamento number: 1;
 	}
 }
 
@@ -92,6 +93,18 @@ species ambulancia parent: automovel {
 	}
 }
 
+species departamento{
+	float size <- 5.0 ;
+	rgb color <- #purple;
+	lugar meuEspaco <- one_of (lugar);//coloca o departamento dentro do metro;
+	// list<item> itensDep;
+
+	aspect base{
+		draw cube(size) color: color;
+	}
+	
+} 
+
 /* Espécie Carro */
 species carro parent: automovel {	
 	rgb cor <- pega_cor();	
@@ -128,6 +141,7 @@ experiment SAMU type: gui {
 			species pessoa aspect: icone;
 			species carro aspect: auto_base;
 			species ambulancia aspect: icone;
+			species departamento aspect: base;
 		}
 	}
 }
