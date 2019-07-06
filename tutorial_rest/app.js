@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var _ = require('underscore');
 var app = express();
 var fs = require("fs");
 
@@ -16,18 +17,26 @@ app.get('/listUsers', function (req, res) {
 });
 
 app.post('/addUser', function (req, res) {
+    let users = fs.readFileSync(file_path);
+    qtdUsers = _.size(users);
+    newID = "user" + (qtdUsers+1);
+    users[newID] = {
+        id: newID,
+        name: req.body.name,
+        password: req.body.password,
+        profession: req.body.profession
+    };
 
-    console.log(req.query);
-
-    fs.readFile(file_path, 'utf8', function (err, data) {
-        data = JSON.parse(data);
-        // data["user4"] = JSON.parse(req.body);
-        data["user4"] = req.body;
-        console.log( req.body.name );
-        console.log( req.body.password );
-
-        res.end( JSON.stringify(data));
+    newData = JSON.stringify(users);
+    fs.writeFile(file_path, newData, 'utf8', function (err) {
+        if (err) {
+            console.log("Erro ao adicionar usuário!");
+            console.log(err);
+            res.send(500);
+        }
     });
+
+    res.end({success: "Salvo com sucesso!"})
 });
 
 app.get('/user/:id', function (req, res) {
