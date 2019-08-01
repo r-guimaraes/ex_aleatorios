@@ -6,4 +6,6 @@
 
 -------------------------------------
 
-- Samples em linguagens originárias, nas pastas correspondentes
+- Samples em linguagens originárias, nas pastas correspondentes:
+  - NodeJS - pasta Calc
+  - GAML - agentes distribuídos
