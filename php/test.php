@@ -15,5 +15,9 @@ function createPhoneNumber($numbersArray) {
   }
   
   return $part;
-    
+}
+
+// Cleaner, simpler, same result
+function createPhoneNumber(array $digits): string {
+  return sprintf("(%d%d%d) %d%d%d-%d%d%d%d", ...$digits);
 }
