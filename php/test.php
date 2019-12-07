@@ -1,3 +1,4 @@
+<?php
 function createPhoneNumber($numbersArray) {
   $exact = 10;
   if (count($numbersArray) != $exact) 
