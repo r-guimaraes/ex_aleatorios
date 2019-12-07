@@ -26,3 +26,5 @@ function createPhoneNumber($numbersArray) {
 function createPhoneNumber(array $digits): string {
   return sprintf("(%d%d%d) %d%d%d-%d%d%d%d", ...$digits);
 }
+
+// ex: echo createPhoneNumber([1,2,3,4,5,6,7,8,1,1]);
