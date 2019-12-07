@@ -1,4 +1,8 @@
 <?php
+/*
+* Tip: test out with `php -a` - interactive mode
+*/
+
 function createPhoneNumber($numbersArray) {
   $exact = 10;
   if (count($numbersArray) != $exact) 
