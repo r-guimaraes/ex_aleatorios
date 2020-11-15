@@ -1,4 +1,7 @@
 /* primos.c – identifica todos os numeros primos ate um certo valor*/
+// Infinitamente mais performático do que a versão serial
+// Quanto maior a carga exigida para execução do programa, mais se torna evidente a superioridade do multithread
+
 #include <pthread.h>
 #include <stdio.h>
 #include <math.h>
