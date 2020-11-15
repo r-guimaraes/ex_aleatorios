@@ -1,4 +1,7 @@
-/* primos.c – identifica todos os numeros primos ate um certo valor*/
+/* 
+    Identifica todos os numeros primos ate um certo valor, dependendo da entrada do usuário
+    Execução de forma serial
+*/
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
