@@ -14,6 +14,7 @@ void *arquivo1a10() {
         fprintf(f, "%s\n", "12345678910");
         fclose(f);
     }
+    pthread_exit(NULL);
 }
 
 void *arquivoAaZ() {
@@ -22,6 +23,7 @@ void *arquivoAaZ() {
         fprintf(f, "%s\n", "ABCDEFGHIJKLMNOPQRSTUVXYZ");
         fclose(f);
     }
+    pthread_exit(NULL);
 }
 
 int main()
