@@ -1,4 +1,7 @@
-/* prog3.c – múltiplas threads */
+/*
+ Múltiplas threads
+ Aguarda execução da thread anterior antes de prosseguir
+*/
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
